@@ -1,0 +1,26 @@
+# Virtual environment.
+# Windows-specific and ~1.2 GB; recreate it with requirements.txt instead.
+.venv/
+venv/
+env/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Regenerable inputs and outputs.
+# Both are reproduced by the scripts in this repository:
+#   generate_test.csv        <- Preprocessing/generate_test_data.py
+#   all_candidates_ehvi.csv  <- Pareto_Model/Pareto_Model.py
+# The small result files (selected_candidates.csv, summary.json,
+# feature_sensitivity.csv, the figures) are tracked.
+generate_test.csv
+all_candidates_ehvi.csv
+
+# OS and editor artefacts
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

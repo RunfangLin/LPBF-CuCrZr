@@ -1,0 +1,81 @@
+SELECTED MODEL
+four_parameter
+
+SELECTED FEATURES
+["power", "speed", "hd", "lt"]
+
+MODEL COMPARISON
+[
+  {
+    "rank": 1,
+    "model": "four_parameter",
+    "feature_count": 4,
+    "features": "power, speed, hd, lt",
+    "best_mean_outer_R2": 0.790205334,
+    "best_std_outer_R2": 0.1129860553,
+    "selected_boosting_rounds": 25
+  },
+  {
+    "rank": 2,
+    "model": "three_parameter",
+    "feature_count": 3,
+    "features": "power, speed, lt",
+    "best_mean_outer_R2": 0.702277783,
+    "best_std_outer_R2": 0.0961456899,
+    "selected_boosting_rounds": 21
+  }
+]
+
+BEST SEARCH PARAMETERS
+{
+  "max_depth": 7,
+  "learning_rate": 0.1,
+  "n_estimators": 600,
+  "subsample": 1.0,
+  "colsample_bytree": 1.0,
+  "min_child_weight": 3,
+  "reg_lambda": 2.0,
+  "reg_alpha": 0.0
+}
+
+FINAL PARAMETERS
+{
+  "max_depth": 7,
+  "learning_rate": 0.1,
+  "n_estimators": 25,
+  "subsample": 1.0,
+  "colsample_bytree": 1.0,
+  "min_child_weight": 3,
+  "reg_lambda": 2.0,
+  "reg_alpha": 0.0
+}
+
+TRAINING_IN_SAMPLE METRICS
+{
+  "R2": 0.9340154134493516,
+  "RMSE": 0.4776200592743131,
+  "MAE": 0.23937131245931031,
+  "MedianAE": 0.1192042541503966
+}
+
+TEST METRICS
+{
+  "R2": 0.8860555712915235,
+  "RMSE": 0.6122416263864996,
+  "MAE": 0.35092908586774535,
+  "MedianAE": 0.1641299438476551
+}
+
+NOTES
+Outer CV validation groups are never used for early stopping.
+Both feature sets use identical train-test groups and outer CV folds.
+The feature set is selected before the final test is evaluated.
+The final test groups are never used for model selection or early stopping.
+The final model is refitted on the complete training pool.
+Training metrics are in-sample and are not generalisation estimates.
+If process-condition fallback grouping is used, the test does not establish generalisation to unseen publications.
+The three-parameter model uses power, speed, and layer thickness.
+The four-parameter model additionally uses hatch spacing.
+VED is not included in either model.
+The application domain constrains deployment inputs; it does not filter the 81-row training database.
+Feature importance is predictive rather than causal.

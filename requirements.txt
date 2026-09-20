@@ -1,0 +1,35 @@
+# LPBF CuCrZr — pinned environment.
+#
+# Versions match those recorded in Density Model/Density_Results/results_summary.json.
+# Density_Predictor.py refuses to load the fitted model when the installed
+# xgboost or scikit-learn version differs from the one used for training, so
+# these two pins are load-bearing rather than cosmetic.
+#
+# Setup (from the project root):
+#     python -m venv .venv
+#     .venv\Scripts\pip install -r requirements.txt      (Windows)
+#     .venv/bin/pip install -r requirements.txt          (macOS / Linux)
+
+# --- Stage 1: density surrogate (Density_Model.py, Density_Predictor.py) ---
+numpy==2.5.3
+pandas==3.0.5
+scikit-learn==1.9.1
+scipy==1.18.1
+xgboost==3.4.1
+joblib==1.6.0
+matplotlib==3.11.2
+
+# --- Stage 2: GP + EHVI (Pareto_Model.py) ---
+# torch is a large download. The default PyPI wheels are CPU-only, which is
+# sufficient here: the GPs are fitted on 161 training rows.
+torch==2.14.0
+gpytorch==1.15.2
+botorch==0.18.1
+linear-operator==0.6.1
+
+# --- Shared ---
+threadpoolctl==3.6.0
+tqdm==4.70.1
+
+# Density_Predictor.py uses tkinter, which ships with CPython on Windows and
+# macOS. On Debian/Ubuntu it is a separate package: apt install python3-tk

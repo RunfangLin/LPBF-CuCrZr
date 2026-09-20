@@ -1,0 +1,190 @@
+{
+  "data_file": "D:\\PhD Apply Document\\LPBF CuCrZr\\Density Model\\Density_Data.csv",
+  "data_sha256": "05339689912f10e422386786d44d0419ae96f9c66ba601bd6a93eb8091e68503",
+  "candidate_feature_sets": {
+    "three_parameter": [
+      "power",
+      "speed",
+      "lt"
+    ],
+    "four_parameter": [
+      "power",
+      "speed",
+      "hd",
+      "lt"
+    ]
+  },
+  "selected_model": "four_parameter",
+  "selected_features": [
+    "power",
+    "speed",
+    "hd",
+    "lt"
+  ],
+  "model_comparison": [
+    {
+      "rank": 1,
+      "model": "four_parameter",
+      "feature_count": 4,
+      "features": "power, speed, hd, lt",
+      "best_mean_outer_R2": 0.790205334,
+      "best_std_outer_R2": 0.1129860553,
+      "selected_boosting_rounds": 25
+    },
+    {
+      "rank": 2,
+      "model": "three_parameter",
+      "feature_count": 3,
+      "features": "power, speed, lt",
+      "best_mean_outer_R2": 0.702277783,
+      "best_std_outer_R2": 0.0961456899,
+      "selected_boosting_rounds": 21
+    }
+  ],
+  "application_domain": {
+    "power": {
+      "minimum": 300.0,
+      "maximum": 370.0,
+      "unit": "W"
+    },
+    "speed": {
+      "minimum": 300.0,
+      "maximum": 500.0,
+      "unit": "mm/s"
+    },
+    "hd": {
+      "minimum": 0.09,
+      "maximum": 0.17,
+      "unit": "mm"
+    },
+    "lt": {
+      "allowed": [
+        20.0,
+        30.0
+      ],
+      "unit": "um"
+    }
+  },
+  "target": "density",
+  "grouping": {
+    "strategy": "identical process condition fallback",
+    "source_column": null,
+    "total_groups": 76,
+    "training_groups": 60,
+    "test_groups": 16,
+    "train_test_group_overlap": 0
+  },
+  "split": {
+    "random_state": 42,
+    "requested_test_group_fraction": 0.2,
+    "total_rows": 81,
+    "training_rows": 60,
+    "test_rows": 21
+  },
+  "search": {
+    "outer_group_folds": 5,
+    "inner_early_stopping_group_fraction": 0.15,
+    "early_stopping_rounds": 100,
+    "hyperparameter_selection_metric": "mean outer-fold R2",
+    "feature_set_selection_metric": "best mean outer-fold R2",
+    "param_grid": {
+      "max_depth": [
+        3,
+        5,
+        7
+      ],
+      "learning_rate": [
+        0.1,
+        0.05,
+        0.02
+      ],
+      "n_estimators": [
+        600,
+        900,
+        1200
+      ],
+      "subsample": [
+        0.8,
+        1.0
+      ],
+      "colsample_bytree": [
+        0.8,
+        1.0
+      ],
+      "min_child_weight": [
+        1,
+        3
+      ],
+      "reg_lambda": [
+        1.0,
+        2.0
+      ],
+      "reg_alpha": [
+        0.0,
+        0.1
+      ]
+    }
+  },
+  "best_search_params": {
+    "max_depth": 7,
+    "learning_rate": 0.1,
+    "n_estimators": 600,
+    "subsample": 1.0,
+    "colsample_bytree": 1.0,
+    "min_child_weight": 3,
+    "reg_lambda": 2.0,
+    "reg_alpha": 0.0
+  },
+  "metrics": {
+    "training_in_sample": {
+      "R2": 0.9340154134493516,
+      "RMSE": 0.4776200592743131,
+      "MAE": 0.23937131245931031,
+      "MedianAE": 0.1192042541503966
+    },
+    "test": {
+      "R2": 0.8860555712915235,
+      "RMSE": 0.6122416263864996,
+      "MAE": 0.35092908586774535,
+      "MedianAE": 0.1641299438476551
+    }
+  },
+  "final_params": {
+    "max_depth": 7,
+    "learning_rate": 0.1,
+    "n_estimators": 25,
+    "subsample": 1.0,
+    "colsample_bytree": 1.0,
+    "min_child_weight": 3,
+    "reg_lambda": 2.0,
+    "reg_alpha": 0.0
+  },
+  "selected_boosting_rounds": 25,
+  "selected_fold_rounds": [
+    23,
+    41,
+    67,
+    25,
+    11
+  ],
+  "software": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.4.1"
+  },
+  "notes": [
+    "Outer CV validation groups are never used for early stopping.",
+    "Both feature sets use identical train-test groups and outer CV folds.",
+    "The feature set is selected before the final test is evaluated.",
+    "The final test groups are never used for model selection or early stopping.",
+    "The final model is refitted on the complete training pool.",
+    "Training metrics are in-sample and are not generalisation estimates.",
+    "If process-condition fallback grouping is used, the test does not establish generalisation to unseen publications.",
+    "The three-parameter model uses power, speed, and layer thickness.",
+    "The four-parameter model additionally uses hatch spacing.",
+    "VED is not included in either model.",
+    "The application domain constrains deployment inputs; it does not filter the 81-row training database.",
+    "Feature importance is predictive rather than causal."
+  ]
+}
