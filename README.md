@@ -8,9 +8,6 @@ relative-density prediction for LPBF CuCrZr and multi-objective optimisation of
 tensile strength against electrical conductivity, and serves as the starting
 point for my PhD proposal on coupling build conditions with ageing response.
 
-Technical notes on the evaluation protocols will be added to this file over the
-coming week.
-
 ---
 
 ## What is here
