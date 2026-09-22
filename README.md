@@ -85,8 +85,8 @@ Two parts of the original capstone workflow required correction.
 
 ### Density-model evaluation
 
-Section 6 of my PhD proposal reports a held-out R² of approximately 0.89 and an
-RMSE of 0.34 percentage points. **That value is not an independent performance
+The original capstone workflow reported a held-out R² of approximately 0.89 and 
+an RMSE of 0.34 percentage points. **That value is not an independent performance
 estimate and should not be used.**
 
 The original workflow compared 93,750 candidate configurations against the
@@ -104,8 +104,8 @@ exploratory scripts generate none of the current outputs and are not included.
 
 ### Property-model anchor points
 
-Section 6 also quotes approximately 85 %IACS for the recommended region. That
-run included three manually specified anchor points added to the
+The original capstone run also reported approximately 85 %IACS for the recommended 
+region. That run included three manually specified anchor points added to the
 Gaussian-process training data, and I could not establish reliable provenance
 for them during reconstruction. Rather than carry them as literature
 observations without traceable evidence, I removed them.
@@ -141,7 +141,7 @@ outer-fold R² of 0.702 ± 0.096 against 0.790 ± 0.113 for the four-parameter
 model, with the feature set chosen before the held-out data were touched. The
 rebuilt workflow therefore uses all four variables.
 
-This clarifies two choices in the proposal. Section 5.1 fixes hatch spacing
+This clarifies two choices in the proposal. It fixes hatch spacing
 experimentally after platform qualification rather than assuming it does not
 matter. And because prediction uncertainty is substantial relative to the 99%
 threshold itself, the proposed work uses a probabilistic manufacturability
